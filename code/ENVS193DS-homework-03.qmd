@@ -1,0 +1,8 @@
+---
+title: "ENVS193DS-homework-03"
+author: "Kate Bierwagen"
+date: "05-28-2026"
+format: pdf
+---
+
+
