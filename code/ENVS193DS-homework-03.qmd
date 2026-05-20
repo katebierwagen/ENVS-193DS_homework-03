@@ -4,5 +4,54 @@ author: "Kate Bierwagen"
 date: "05-28-2026"
 format: pdf
 ---
+# Setting Up
+```{r}
+#| message: false
+
+# loading in packages 
+library(tidyverse)
+library(here)
+library(janitor)
+library(readxl)
+```
+
+```{r}
+#| message: false
+# reading in data
+kelp <- read_csv(here("data", "temp-kelp.csv"))
+```
+
+# Problem 1. Giant kelp fronds
+
+## a. An appropriate test
+
+Since you are interested in the strength of the relationship between temperature and giant kelp frond elongation rate, the appropriate test is a Pearson's r or a Spearman rank correlation, which are both tests for correlation. Pearson's r test is a parametric version of a correlation test which is used for continuous and normally distributed variables, testing the linear relationship between them. Spearman rank correlation is a non-parametric version, which is testing the monotonic relationship between variables.
+
+## b. Create a visualization!!!
+
+
+
+
+
+
+
+
+
+
+## c. Check your assumptions and run your test!!
+
+
+
+
+## d. Results communication
+
+
+
+## e. Test implications
+
+
+
+## f. Double check your own work.
+
 
 
