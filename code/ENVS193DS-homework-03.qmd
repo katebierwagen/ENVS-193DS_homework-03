@@ -47,19 +47,199 @@ ggplot(data = kelp, # using kelp data frame
 
 ## c. Check your assumptions and run your test!!
 
--run pearson's r test 
+### Checking assumptions
+
+#### Check 1: Linearity
+
+```{r}
+# base layer: ggplot
+ggplot(data = kelp, # using kelp data frame
+       aes(x = temp_c, # x- axis: Ocean temperature (degrees C)
+           y = kelp_elong)) + # y axis: kelp elongation rate (cm/day)
+  # first layer: points
+  geom_point(
+    color = "purple") + #changing color from default
+  # relabeling x- and y- axes
+   labs(
+       x = "Ocean Temperature (°C)", # 
+       y = "Kelp Frond Elongation Rate (cm/day)") +
+  # changing theme from default 
+  theme_bw()
+```
+
+#### Check 2: Normality
+
+```{r}
+# base layer: ggplot, using kelp object, 
+ggplot(data = kelp,
+       # y axis for QQ plot, ocean temperatire
+       aes(sample = temp_c)) +
+  # first layer: QQ reference line
+  geom_qq_line(color = "red") +
+  # second layer: QQ plot
+  geom_qq() 
+```
+
+```{r}
+# Kelp elongation normality
+# base layer: ggplot, using ukelp object
+ggplot(data = kelp,
+       # y axis for QQ plot (kelp frond elongation rate)
+       aes(sample = kelp_elong)) +
+  # first layer: QQ reference line
+  geom_qq_line(color = "red") +
+  # second layer: QQ plot
+  geom_qq() 
+
+```
 
 
+Q-Q plots were created to check that both variables, ocean temperature (°C) and kelp elongation rate (cm/day), were normally distributed. Then, a scatter plot was created to check if there was a linear or monotonic relationship between variables. Both variables are continuous variables, are normally distributed as they follow the theoretical distribution reference lines, and follow a relatively linear relationship. 
+
+### Running test:
+
+```{r}
+# running correlation test
+cor.test(kelp$temp_c, kelp$kelp_elong, # variables ocean temperature and giant kelp elongation rate
+         method = "pearson") # running pearson's r based on assumptions
+```
 
 ## d. Results communication
 
+To evaluate the strength of the relationship between ocean temperature and giant kelp  (*Macrocystis pyrifera*) frond elongation rate, I used a Pearson's correlation test. The test revealed a moderate negative relationship between ocean temperature and kelp elongation rate (Pearson's r = 0.69, t(30) = - 5.19, p < 0.001, $\alpha$ = 0.05). **double check if it is moderate or moderate to strong and if i said p - value correctly**
 
 
 ## e. Test implications
 
 
+**- At higher ocean temperatures, giant kelp frond elongation rate is lower. ** -FINISH
 
 ## f. Double check your own work.
+```{r}
+#| warning: false
+# running correlation test
+cor.test(kelp$temp_c, kelp$kelp_elong, # variables ocean temperature and giant kelp elongation rate
+         method = "spearman") # Spearman's rank test 
+```
 
-- run spearman rank test
+**description**
+
+
+# Problem 2. Personal data
+
+
+## a. Updating your visualizations
+
+```{r}
+# creating new object from my_data
+my_data_clean <- my_data |> 
+  # cleaning names
+  clean_names() |> 
+  # dropping na values
+  drop_na() |> 
+  # making productivity larger numbers
+  mutate(productivity_hun = productivity*100)
+```
+
+
+```{r}
+#| fig-width: 6
+#| fig-height: 6
+#| label: personal-data-visualization
+# base layer: ggplot using clean data frame
+ggplot(data = my_data_clean,
+       mapping = aes(x = location, # x-axis: location
+                     y = productivity_hun, # y-axis productivity x 100
+                     color = location)) + 
+  # first layer: showing underlying data
+  geom_jitter(height = 0, # making jitter vertically
+              width = 0.2, # smaller jitter in horizontal direction
+              shape = 19) + # changing shape to closed circles
+  # second layer: boxplot
+  geom_boxplot() +
+  # adding title and relabeling x- and y- axes
+  labs(title = "Productivity based on Location of Work",
+       x = "Location of Work",
+       y = "Ratio of Tasks completed to Minutes spent on Work")+
+  # changing colors of locations from default
+  scale_color_manual(values = c("home" = "blue",
+                                "school" = "coral",
+                                "cafe" = "darkseagreen")) +
+  # changing theme from default
+  theme_minimal()
+```
+
+```{r}
+#| fig-width: 6
+#| fig-height: 6
+# base layer: ggplot using cleaned data
+ggplot(data = my_data_clean,
+       mapping = aes(x = sleep_mins, # x axis
+                     y = productivity_hun)) + # y axis
+  # first layer: points to display scatter plot
+    geom_point(color = "orange",  # changing color of points from default
+               size = 1.5) + # changing size of 
+  # adding title, relabeling x- and y- axes
+  labs(title = "Productivity  based on Amount of Sleep I get",
+       x = "Amount of Sleep (mins)",
+       y = "Ratio of Tasks completed to Minutes spent on Work") +
+  # changing theme from default
+  theme_dark()
+```
+
+## b. Captions
+
+
+
+
+# Problem 3. Affective visualization
+
+
+## a. Describe in words what an affective visualization could look like for your personal data (3-5 sentences).
+
+
+
+## b. Create a sketch (on paper) of your idea.
+
+
+## c. Make a draft of your visualization.
+
+
+## d. Write an artist statement.
+
+
+## e. Prep your materials to share in class.
+
+
+
+# Problem 4. Statistical critique
+
+
+## a. Revisit and summarize
+
+The authors performed numerous statistical tests to addresss the question, "Do humpback whale movements through Saldanha Bay follow the traditionally expected Southern Hemisphere migration patterns?". The test I focused on was a **Kruskal-Wallis** test, where the response variable is humpback whale group size and the predictor variable is seasons. 
+
+```{r}
+#| message: false
+path <- file.path()
+# inserting figure
+knitr:: include_graphics("/Users/katebierwagen/Downloads/envs193dshw2-photo.png")
+```
+
+## b. Visual clarity
+
+
+
+## c. Aesthetic clarity
+
+
+## d. Recommendations
+
+
+
+
+
+
+
+
 
