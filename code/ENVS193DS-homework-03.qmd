@@ -19,6 +19,7 @@ library(readxl)
 #| message: false
 # reading in data
 kelp <- read_csv(here("data", "temp-kelp.csv"))
+my_data <-read_csv(here("data", "stats-personal-data_0523.csv"))
 ```
 
 # Problem 1. Giant kelp fronds
@@ -45,7 +46,7 @@ ggplot(data = kelp, # using kelp data frame
   theme_bw()
 ```
 
-## c. Check your assumptions and run your test!!
+## c. Check your assumptions and run your test
 
 ### Checking assumptions
 
@@ -104,17 +105,17 @@ cor.test(kelp$temp_c, kelp$kelp_elong, # variables ocean temperature and giant k
          method = "pearson") # running pearson's r based on assumptions
 ```
 
-## d. Results communication
+## d. Results communication --
 
 To evaluate the strength of the relationship between ocean temperature and giant kelp  (*Macrocystis pyrifera*) frond elongation rate, I used a Pearson's correlation test. The test revealed a moderate negative relationship between ocean temperature and kelp elongation rate (Pearson's r = 0.69, t(30) = - 5.19, p < 0.001, $\alpha$ = 0.05). **double check if it is moderate or moderate to strong and if i said p - value correctly**
 
 
-## e. Test implications
+## e. Test implications!!!!
 
 
 **- At higher ocean temperatures, giant kelp frond elongation rate is lower. ** -FINISH
 
-## f. Double check your own work.
+## f. Double check your own work!!!!
 ```{r}
 #| warning: false
 # running correlation test
@@ -138,7 +139,8 @@ my_data_clean <- my_data |>
   # dropping na values
   drop_na() |> 
   # making productivity larger numbers
-  mutate(productivity_hun = productivity*100)
+  mutate(productivity = as.numeric(productivity), # convert column to numeric instead of character
+         productivity_hun = productivity*100)
 ```
 
 
@@ -150,45 +152,68 @@ my_data_clean <- my_data |>
 ggplot(data = my_data_clean,
        mapping = aes(x = location, # x-axis: location
                      y = productivity_hun, # y-axis productivity x 100
-                     color = location)) + 
-  # first layer: showing underlying data
+                     color = location, # coloring by location
+                     fill = location)) +# filling boxplot by location
+  # first layer: boxplot
+  geom_boxplot(alpha = 0.3) + # making boxplot more transparent
+  # second layer: showing underlying data
   geom_jitter(height = 0, # making jitter vertically
               width = 0.2, # smaller jitter in horizontal direction
               shape = 19) + # changing shape to closed circles
-  # second layer: boxplot
-  geom_boxplot() +
   # adding title and relabeling x- and y- axes
   labs(title = "Productivity based on Location of Work",
        x = "Location of Work",
-       y = "Ratio of Tasks completed to Minutes spent on Work")+
+       y = "Ratio of Tasks Completed:Minutes spent on Work",
+       subtitle = "Most recent observation: May 23, 2026") + # adding subtitle
   # changing colors of locations from default
   scale_color_manual(values = c("home" = "blue",
                                 "school" = "coral",
                                 "cafe" = "darkseagreen")) +
+  # changing fill colors of boxplots
+  scale_fill_manual(values = c("home" = "blue",
+                               "school" = "coral",
+                               "cafe" = "darkseagreen")) +
+  # relabelling location names to be Capitalized
+  scale_x_discrete(labels = c("cafe" = "Cafe",
+                                "home" = "Home",
+                                "school" = "School")) +
   # changing theme from default
-  theme_minimal()
+  theme_minimal() +
+  theme(legend.position = "none", # removing legend
+        panel.grid = element_blank(), # removing gridlines
+         axis.line = element_line(color = "black"), # adding black axis lines
+        axis.ticks = element_line(color = "black"), # adding axis ticks
+        axis.ticks.length = unit(0.2, "cm")) # making tick marks 2 cm long
 ```
 
 ```{r}
-#| fig-width: 6
-#| fig-height: 6
+#| fig-width: 7
+#| fig-height: 7
 # base layer: ggplot using cleaned data
 ggplot(data = my_data_clean,
-       mapping = aes(x = sleep_mins, # x axis
-                     y = productivity_hun)) + # y axis
+       mapping = aes(x = sleep_mins, # x axis: sleep recorded 
+                     y = productivity_hun)) + # y axis: ratio of tasks compeleted to minutes spent on work
   # first layer: points to display scatter plot
-    geom_point(color = "orange",  # changing color of points from default
-               size = 1.5) + # changing size of 
+    geom_point(color = "purple",  # changing color of points from default
+               size = 1.5) + # changing size of pints
   # adding title, relabeling x- and y- axes
-  labs(title = "Productivity  based on Amount of Sleep I get",
+  labs(title = "Relationsip Between Sleep and Productivity of Work",
        x = "Amount of Sleep (mins)",
-       y = "Ratio of Tasks completed to Minutes spent on Work") +
+       y = "Ratio of Tasks completed to Minutes spent on Work",
+       subtitle = "Most recent observation: May 23, 2026") + # adding subtitle
+  scale_x_continuous(breaks = seq(300, 700, by = 50)) + # setting x axis ticks every 50 mins
+  scale_y_continuous(breaks = seq(0, 8, by = 2)) + # setting y axis ticks every 2 ratio to reduce visual clutter
   # changing theme from default
-  theme_dark()
+  theme_minimal() +
+  theme(panel.grid.minor = element_blank(),# removing minor grid lines to reduce visual clutter
+        axis.line = element_line(color = "black"), # adding black axis lines
+        axis.ticks = element_line(color = "black"), # adding black axis ticks
+        axis.ticks.length = unit(0.2, "cm")) # making tick marks 2 cm long
 ```
 
-## b. Captions
+## b. Captions!!!!
 
+**Figure 1.** 
 
 
 
@@ -233,16 +258,9 @@ The authors represented their statistics using a box plot-style figure to compar
 
 ## c. Aesthetic clarity
 
-I believe the authors handled "visual clutter" very well. The figure has minimal amount of gridlines, a white background, and no underlying data which in my opionion was a good decison as it would clutter the figure otherwise. The figure has a high data:ink ratio, the x- axis label is very well displayed, and the legend is clear and displayed well. 
+I believe the authors handled "visual clutter" very well. The figure has minimal amount of grid lines, a white background, and no underlying data which in my opinion was a good decision as it would clutter the figure otherwise. The figure has a high data:ink ratio, the x- axis label is very well displayed, and the legend is clear and displayed well. 
 
 ## d. Recommendations
 
-
-
-
-
-
-
-
-
+Regarding axis labels, I would suggest making the y- axis a little more clear and including "estimate" and "Humpback" so it is very clear to the reader on what they are looking at without having to read part of the paper or caption. Additionally, adding one more component to the legend at the top about the significant difference between seasons to once again make it more clear to the reader about what they are looking at. The sample sizes for each season were included in parentheses however it is not clear that they are sample sizes without looking at the figure caption, so either including n or adding () in the legend could make it more clear to the reader. 
 
