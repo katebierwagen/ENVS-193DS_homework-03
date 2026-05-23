@@ -26,7 +26,7 @@ my_data <-read_csv(here("data", "stats-personal-data_0523.csv"))
 
 ## a. An appropriate test
 
-Since you are interested in the strength of the relationship between temperature and giant kelp frond elongation rate, the appropriate test is a Pearson's r or a Spearman rank correlation, which are both tests for correlation. Pearson's r test is a parametric version of a correlation test which is used for continuous and normally distributed variables, testing the linear relationship between them. Spearman rank correlation is a non-parametric version, which is testing the monotonic relationship between variables. 
+Since you are interested in the strength of the relationship between temperature and giant kelp frond elongation rate, the appropriate test is a Pearson's r or a Spearman rank correlation, which are both tests for correlation. Pearson's r test is a parametric version of a correlation test, used for continuous and normally distributed variables, testing the linear relationship between them. Spearman rank correlation is a non-parametric version, which is testing the monotonic relationship between variables. 
 
 ## b. Create a visualization
 
@@ -50,7 +50,7 @@ ggplot(data = kelp, # using kelp data frame
 
 ### Checking assumptions
 
-#### Check 1: Linearity
+#### *Check 1: Linearity*
 
 ```{r}
 # base layer: ggplot
@@ -68,7 +68,7 @@ ggplot(data = kelp, # using kelp data frame
   theme_bw()
 ```
 
-#### Check 2: Normality
+#### *Check 2: Normality*
 
 ```{r}
 # base layer: ggplot, using kelp object, 
@@ -95,13 +95,14 @@ ggplot(data = kelp,
 ```
 
 
-Q-Q plots were created to check that both variables, ocean temperature (°C) and kelp elongation rate (cm/day), were normally distributed. Then, a scatter plot was created to check if there was a linear or monotonic relationship between variables. Both variables are continuous variables, are normally distributed as they follow the theoretical distribution reference lines, and follow a relatively linear relationship. 
+Q-Q plots were created to check that both variables, ocean temperature (°C) and kelp elongation rate (cm/day), were normally distributed. Then, a scatter plot was created to check if there was a linear or monotonic relationship between variables. Both variables are continuous variables, are normally distributed as they follow the theoretical distribution reference lines, and follow a relatively linear relationship so a Pearson's r test is recommended. 
 
 ### Running test:
 
 ```{r}
 # running correlation test
-cor.test(kelp$temp_c, kelp$kelp_elong, # variables ocean temperature and giant kelp elongation rate
+cor.test(kelp$temp_c, kelp$kelp_elong, # variables ocean temperature and 
+# giant kelp elongation rate
          method = "pearson") # running pearson's r based on assumptions
 ```
 
@@ -119,17 +120,20 @@ To evaluate the strength of the relationship between ocean temperature and giant
 ```{r}
 #| warning: false
 # running correlation test
-cor.test(kelp$temp_c, kelp$kelp_elong, # variables ocean temperature and giant kelp elongation rate
+cor.test(kelp$temp_c, kelp$kelp_elong, # variables ocean temperature and
+# giant kelp elongation rate
          method = "spearman") # Spearman's rank test 
 ```
 
-**description**
+**description!!!!**
 
 
 # Problem 2. Personal data
 
 
 ## a. Updating your visualizations
+
+### Cleaning data:
 
 ```{r}
 # creating new object from my_data
@@ -138,11 +142,13 @@ my_data_clean <- my_data |>
   clean_names() |> 
   # dropping na values
   drop_na() |> 
-  # making productivity larger numbers
-  mutate(productivity = as.numeric(productivity), # convert column to numeric instead of character
+  # making productivity larger numbers, ), convert column to numeric,
+  # instead of character
+  mutate(productivity = as.numeric(productivity),
          productivity_hun = productivity*100)
 ```
 
+### Creating figures: 
 
 ```{r}
 #| fig-width: 6
@@ -187,12 +193,13 @@ ggplot(data = my_data_clean,
 ```
 
 ```{r}
-#| fig-width: 7
-#| fig-height: 7
+#| fig-width: 6
+#| fig-height: 6
 # base layer: ggplot using cleaned data
 ggplot(data = my_data_clean,
        mapping = aes(x = sleep_mins, # x axis: sleep recorded 
-                     y = productivity_hun)) + # y axis: ratio of tasks compeleted to minutes spent on work
+                     y = productivity_hun)) + # y axis: ratio of tasks 
+  # compeleted to minutes spent on work
   # first layer: points to display scatter plot
     geom_point(color = "purple",  # changing color of points from default
                size = 1.5) + # changing size of pints
@@ -201,11 +208,14 @@ ggplot(data = my_data_clean,
        x = "Amount of Sleep (mins)",
        y = "Ratio of Tasks completed to Minutes spent on Work",
        subtitle = "Most recent observation: May 23, 2026") + # adding subtitle
-  scale_x_continuous(breaks = seq(300, 700, by = 50)) + # setting x axis ticks every 50 mins
-  scale_y_continuous(breaks = seq(0, 8, by = 2)) + # setting y axis ticks every 2 ratio to reduce visual clutter
+  scale_x_continuous(breaks = seq(300, 700, by = 50)) + # setting x axis ticks
+  # every 50 mins
+  scale_y_continuous(breaks = seq(0, 8, by = 2)) + # setting y axis ticks every 
+  # 2 ratio to reduce visual clutter
   # changing theme from default
   theme_minimal() +
-  theme(panel.grid.minor = element_blank(),# removing minor grid lines to reduce visual clutter
+  theme(panel.grid.minor = element_blank(),# removing minor grid lines to 
+  # reduce visual clutter
         axis.line = element_line(color = "black"), # adding black axis lines
         axis.ticks = element_line(color = "black"), # adding black axis ticks
         axis.ticks.length = unit(0.2, "cm")) # making tick marks 2 cm long
