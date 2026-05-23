@@ -228,12 +228,15 @@ knitr:: include_graphics("/Users/katebierwagen/Downloads/envs193dshw2-photo.png"
 
 ## b. Visual clarity
 
+The authors represented their statistics using a box plot-style figure to compare whale group size estimates across different seasons (Autumn to mid-winter - Mid- to late summer), showing which seasons were significantly different fand what seasons had higher recorded whale group size (mid-spring and early-summer). The x- and y- axes are in logical positions, with the season on the x-axis and best estimates for whale group size on the y-axis, the mean, SE, and sample size are well represented, as well as the comparisons from post-hoc tests. However, the y-axis title could be a little more clear including estimate instead of just "best group size" as it is hard to know without reading the figure caption. The underlying data is not represented in this figure.
 
 
 ## c. Aesthetic clarity
 
+I believe the authors handled "visual clutter" very well. The figure has minimal amount of gridlines, a white background, and no underlying data which in my opionion was a good decison as it would clutter the figure otherwise. The figure has a high data:ink ratio, the x- axis label is very well displayed, and the legend is clear and displayed well. 
 
 ## d. Recommendations
+
 
 
 
