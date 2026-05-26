@@ -114,7 +114,7 @@ To evaluate the strength of the relationship between ocean temperature and giant
 ## e. Test implications!!!!
 
 
-**- At higher ocean temperatures, giant kelp frond elongation rate is lower. ** -FINISH
+Our results revealed a moderate negative relationship between ocean temperature and Giant Kelp Elongation rate. This means that at higher ocean temperatures, giant kelp frond elongation rate is lower, Ultimately, these results suggest that higher ocean temperatures threaten kelp health and kelp individuals should be planted in lower ocean temperatures.
 
 ## f. Double check your own work!!!!
 ```{r}
