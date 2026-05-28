@@ -3,6 +3,10 @@ title: "ENVS193DS-homework-03"
 author: "Kate Bierwagen"
 date: "05-28-2026"
 format: pdf
+toc: true # display table of contents
+execute:
+  message: false # make sure messages don't show up
+  warning: false #  make sure warnings don't show up
 ---
 # Setting Up
 ```{r}
@@ -125,11 +129,10 @@ cor.test(kelp$temp_c, kelp$kelp_elong, # variables ocean temperature and
          method = "spearman") # Spearman's rank test 
 ```
 
-**description!!!!**
-
+Based on the correlation coefficient from the Spearman's rank test ($\rho$ = -0.69) and p- value (p < 0.01), I would make the same decision to reject the null hypothesis, meaning that there is a statistically significant relationship between ocean temperatures and giant kelp elongation rate. I would also interpret the results the same, that there is a moderate negative relationship between ocean temperature and giant kelp elongation rate. (Spearman's $\rho$ = -0.69, S = 9216.1, p = < 0.01, $\alpha$ = 0.05).
+**ask if i should include negative in explanation**
 
 # Problem 2. Personal data
-
 
 ## a. Updating your visualizations
 
@@ -223,8 +226,9 @@ ggplot(data = my_data_clean,
 
 ## b. Captions!!!!
 
-**Figure 1.** 
+**Figure 1.** **School displayed a higher productivity level compared to cafe and home locations.** Points represent individual work sessions (n = 30, most recent observation May 23, 2026). Boxes represent IQR and lines represent medians. School location (orange) showed highest median ratio of tasks completed to minutes spent on work with the widest interquartile range. 
 
+**Figure 2.** **More sleep does not reliably lead to higher productivity.** Data points in purple represent individual work sessions (n = 30, most recent observation May 23, 2026), with no consistent upward trend observed as sleep duration increases. The highest recorded ratio of tasks completed to minutes spent on work occurred with the one of the lowest sleep duration (373 minutes). 
 
 
 # Problem 3. Affective visualization
