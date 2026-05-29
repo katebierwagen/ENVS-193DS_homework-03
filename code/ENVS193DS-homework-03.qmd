@@ -222,7 +222,7 @@ ggplot(data = my_data_clean,
         axis.ticks.length = unit(0.2, "cm")) # making tick marks 2 cm long
 ```
 
-## b. Captions!!!!
+## b. Captions
 
 **Figure 1.** **School displayed a higher productivity level compared to cafe and home locations.** Points represent individual work sessions (n = 30, most recent observation May 23, 2026). Boxes represent IQR and lines represent medians. School location (orange) showed highest median ratio of tasks completed to minutes spent on work with the widest interquartile range. 
 
@@ -232,7 +232,7 @@ ggplot(data = my_data_clean,
 # Problem 3. Affective visualization
 
 
-## a. Describe in words what an affective visualization could look like for your personal data (3-5 sentences).
+## a. Describe in words what an affective visualization could look like for your personal data
 
 For my affective visualization, I am inspired by Stefanie Posavec and Giorgia Lupi's Dear Data project and make doodles surrounded by different aspects of sleep. I would love to draw a bed with someone sleeping at the bottom of the page and have little thought bubbles or clouds scattered throughout the paper to represent individual study sessions. Within these clouds, I want to include different doodles like Z's, lines, circles, and moons to represent different variables of these study sessions such as with friends or not, number of hours slept, caffeine or not, number of tasks completed, and houts spent on work. 
 
@@ -254,12 +254,12 @@ knitr:: include_graphics("/Users/katebierwagen/Downloads/visualization_draft_env
 ```
 
 
-## d. Write an artist statement.
+## d. Write an artist statement
 
 This drawing draws inspiration from Stefanie Posavec and Giorgia Lupi's Dear Data project as well as the drawings I see on Pinterest, and represents the productivity of work as a function of the amount of sleep I got the previous night. This piece is a watercolor painting of a night sky and person sleeping, with each cloud representing an individual study session. and doodles within each cloud representing different variables associated with each work session. The base layer will be water color and then overlaid with marker or color pencil to describe my work sessions.
 
 
-## e. Prep your materials to share in class.
+## e. Prep your materials to share in class
 
 **Slides:** https://docs.google.com/presentati
 
