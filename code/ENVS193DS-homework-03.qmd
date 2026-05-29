@@ -110,16 +110,15 @@ cor.test(kelp$temp_c, kelp$kelp_elong, # variables ocean temperature and
          method = "pearson") # running pearson's r based on assumptions
 ```
 
-## d. Results communication --
+## d. Results communication 
 
-To evaluate the strength of the relationship between ocean temperature and giant kelp  (*Macrocystis pyrifera*) frond elongation rate, I used a Pearson's correlation test. The test revealed a moderate negative relationship between ocean temperature and kelp elongation rate (Pearson's r = - 0.69, t(30) = - 5.19, p < 0.001, $\alpha$ = 0.05). **double check if it is moderate or moderate to strong and if i said p - value correctly**
+To evaluate the strength of the relationship between ocean temperature and giant kelp  (*Macrocystis pyrifera*) frond elongation rate, I used a Pearson's correlation test. The test revealed a moderate negative relationship between ocean temperature and kelp elongation rate (Pearson's r = - 0.69, t(30) = - 5.19, p < 0.001, $\alpha$ = 0.05). 
 
-
-## e. Test implications!!!!
+## e. Test implications
 
 Our results revealed a moderate negative relationship between ocean temperature and Giant Kelp Elongation rate. This means that at higher ocean temperatures, giant kelp frond elongation rate is lower, Ultimately, these results suggest that higher ocean temperatures threaten kelp health and kelp individuals should be planted in lower ocean temperatures.
 
-## f. Double check your own work!!!!
+## f. Double check your own work 
 ```{r}
 #| warning: false
 # running correlation test
@@ -239,19 +238,32 @@ For my affective visualization, I am inspired by Stefanie Posavec and Giorgia Lu
 
 ## b. Create a sketch (on paper) of your idea.
 
+```{r, echo=FALSE}
+#| message: false
+# loading in image
+knitr:: include_graphics("/Users/katebierwagen/Downloads/visualization_sketch.pdf")
+```
+
 
 ## c. Make a draft of your visualization.
 
+```{r, echo=FALSE}
+#| message: false
+# loading in image
+knitr:: include_graphics("/Users/katebierwagen/Downloads/visualization_draft_envs193ds.pdf")
+```
 
 
 ## d. Write an artist statement.
 
-This drawing draws inpsiration from Stefanie Posavec and Giorgia Lupi's Dear Data project as well as the drawings I see on Pinterest, and represents the productivity of work as a function of the amount of sleep I got the previous night. This piece is a watercolor painting of a night sky and person sleeping, with each cloud representing an individual study session. and doodles within each cloud representing different variables associated with each work session. The base layer will be water color and then overlaid with marker or color pencil to describe my work sessions.
+This drawing draws inspiration from Stefanie Posavec and Giorgia Lupi's Dear Data project as well as the drawings I see on Pinterest, and represents the productivity of work as a function of the amount of sleep I got the previous night. This piece is a watercolor painting of a night sky and person sleeping, with each cloud representing an individual study session. and doodles within each cloud representing different variables associated with each work session. The base layer will be water color and then overlaid with marker or color pencil to describe my work sessions.
 
 
 ## e. Prep your materials to share in class.
 
+**Slides:** https://docs.google.com/presentati
 
+on/d/1JiG_4HsGqKmk8n7m2uGnGQliuuB5ZrugnoLFuaByVXc/edit?usp=sharing 
 
 # Problem 4. Statistical critique
 
@@ -260,12 +272,6 @@ This drawing draws inpsiration from Stefanie Posavec and Giorgia Lupi's Dear Dat
 
 The authors performed numerous statistical tests to addresss the question, "Do humpback whale movements through Saldanha Bay follow the traditionally expected Southern Hemisphere migration patterns?". The test I focused on was a **Kruskal-Wallis** test, where the response variable is humpback whale group size and the predictor variable is seasons. 
 
-```{r}
-#| message: false
-path <- file.path()
-# inserting figure
-knitr:: include_graphics("/Users/katebierwagen/Downloads/envs193dshw2-photo.png")
-```
 
 ## b. Visual clarity
 
