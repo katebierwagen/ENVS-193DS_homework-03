@@ -127,7 +127,7 @@ cor.test(kelp$temp_c, kelp$kelp_elong, # variables ocean temperature and
          method = "spearman") # Spearman's rank test 
 ```
 
-Based on the correlation coefficient from the Spearman's rank test ($\rho$ = -0.69) and p- value (p < 0.01), I would make the same decision to reject the null hypothesis, meaning that there is a statistically significant relationship between ocean temperatures and giant kelp elongation rate. I would also interpret the results the same, that there is a moderate negative relationship between ocean temperature and giant kelp elongation rate. (Spearman's $\rho$ = -0.69, S = 9216.1, p = < 0.01, $\alpha$ = 0.05).
+Based on the correlation coefficient from the Spearman's rank test ($\rho$ = -0.69) and p- value (p < 0.01), I would make the same decision to reject the null hypothesis, meaning that there is a statistically significant relationship between ocean temperatures and giant kelp elongation rate. I would also interpret the results the same to the Pearson's test, that there is a moderate negative relationship between ocean temperature and giant kelp elongation rate as both have the  same correlation coefficient ($\rho$ = -0.69, r = -0.69) and p-value (p < 0.001). (Spearman's $\rho$ = -0.69, S = 9216.1, p = < 0.01, $\alpha$ = 0.05), (Pearson's r = - 0.69, t(30) = - 5.19, p < 0.001, $\alpha$ = 0.05).
 
 
 # Problem 2. Personal data
@@ -261,9 +261,7 @@ This drawing draws inspiration from Stefanie Posavec and Giorgia Lupi's Dear Dat
 
 ## e. Prep your materials to share in class
 
-**Slides:** https://docs.google.com/presentati
-
-on/d/1JiG_4HsGqKmk8n7m2uGnGQliuuB5ZrugnoLFuaByVXc/edit?usp=sharing 
+[Slides for Class](https://docs.google.com/presentation/d/1JiG_4HsGqKmk8n7m2uGnGQliuuB5ZrugnoLFuaByVXc/edit?usp=sharing)
 
 # Problem 4. Statistical critique
 
@@ -271,6 +269,13 @@ on/d/1JiG_4HsGqKmk8n7m2uGnGQliuuB5ZrugnoLFuaByVXc/edit?usp=sharing
 ## a. Revisit and summarize
 
 The authors performed numerous statistical tests to addresss the question, "Do humpback whale movements through Saldanha Bay follow the traditionally expected Southern Hemisphere migration patterns?". The test I focused on was a **Kruskal-Wallis** test, where the response variable is humpback whale group size and the predictor variable is seasons. 
+
+```{r, echo=FALSE}
+#| message: false
+# loading in image
+
+knitr::include_graphics("/Users/katebierwagen/Desktop/github/ENVS-193DS/ENVS-193DS_homework-03/diagram.png")
+```
 
 
 ## b. Visual clarity
